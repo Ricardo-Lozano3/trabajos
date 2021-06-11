@@ -47,8 +47,11 @@ export class RegistrosComponent {
   }
 
   verFecha(){
-    let fecha = this.miFormulario.get('fecha')?.value
+    //let fecha = this.miFormulario.get('fecha')?.value
+    let fecha = moment( this.miFormulario.get('fecha')?.value )
+    let edad = fecha.fromNow()
     console.log(fecha)
+    console.log('mi edad es: '+edad
   }
 
   crearFormulario(){
