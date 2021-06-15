@@ -1,0 +1,41 @@
+<div class="wrapper col-4">
+                                <div>
+                                    <input autocomplete="off" formControlName="nombreMunicipio" class="form-control text-center" type="text" id="idmunicipio" placeholder="Municipio Empresa*" (keyup)="deparMuniBuscar($event.target.value)" required>
+                                </div>
+                                <div class="panel-body list-group munireg">
+                                    <div class=" seleccionado form-material" *ngFor="let dm of depasMunis | busqueda: buscarDepasMunis" style="cursor: pointer">
+                                        <p class="text-center" (click)="selecionarMunicipio(dm)">
+                                            {{ dm.nombreMunicipio }} - {{ dm.nombreDepartamento }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'busqueda'
+})
+export class BusquedaPipe implements PipeTransform {
+
+  transform(arreglo: any[] , texto: string): unknown {
+
+    if (!texto) {
+        return;
+    }
+
+    texto = texto.toLocaleLowerCase();
+
+    return arreglo = arreglo.filter((depaMuni) => {
+      return (depaMuni.nombreMunicipio.toLowerCase().indexOf(texto.toLowerCase()) > -1  ||
+            depaMuni.nombreDepartamento.toLowerCase().indexOf(texto.toLowerCase()) > -1 );
+      });
+
+
+}
+
+}
