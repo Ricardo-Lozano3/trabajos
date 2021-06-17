@@ -44,7 +44,7 @@ export class FormularioComponent implements OnInit {
     this.inicializarFormulario()
     this.getDepartamentos();
     this.getParentesco();
-    this.inicioPrueba()
+    //this.inicioPrueba()
     //this.valorSuscripcion()
     this.departamento.valueChanges.subscribe( () => {
       this.departamentoSelect();
